@@ -14,4 +14,8 @@ class Mention < ActiveRecord::Base
 
     Mention.find_by_sql([sql].concat(params_arr))
   end
+
+  def self.drop_old_rows
+    Mention.where('created_at < ?', Date.today.advance(days: -14)).destroy_all
+  end
 end
