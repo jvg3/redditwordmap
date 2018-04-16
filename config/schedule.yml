@@ -1,0 +1,4 @@
+reddit_worker:
+  cron: "*/1 * * * *"
+  class: "RedditWorker"
+  queue: default
