@@ -15,8 +15,8 @@ WordMap = {
         this.printCloud(results.words);
       }
     });
-    this.width = 500;
-    this.height = 500;
+    this.width = 1000;
+    this.height = 800;
 
   },
   printCloud: function(words) {
@@ -26,7 +26,7 @@ WordMap = {
     var drawSkillCloud = this.drawSkillCloud;
 
     d3.layout.cloud()
-      .size([500, 500])
+      .size([1000, 800])
       .words(words)
       .rotate(function() {
         return ~~(Math.random() * 2) * 90;
