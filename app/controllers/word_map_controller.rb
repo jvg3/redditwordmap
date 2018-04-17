@@ -26,7 +26,7 @@ class WordMapController < ApplicationController
         json_words.reject!{ |w| w[:size] < 3 }
         json_words.sort!{ |x,y| y[:size] <=> x[:size] }
 
-        render json: { words: json_words.first(100) }
+        render json: { words: json_words.first(120) }
       end
     end
   end
