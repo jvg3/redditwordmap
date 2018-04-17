@@ -27,9 +27,15 @@ class WordMapController < ApplicationController
         json_words = word_counts.map{ |word, count| { text: word, size: count } }
         json_words.reject!{ |w| w[:size] < 3 }
         json_words.sort!{ |x,y| y[:size] <=> x[:size] }
+        json_words = normalize(json_words)
 
         render json: { words: json_words.first(300) }
       end
     end
+  end
+
+  def normalize(json_words)
+    max = json_words.first.size
+    json_words.each{ |x| w[:size] = w[:size].to_f*100/max }
   end
 end
