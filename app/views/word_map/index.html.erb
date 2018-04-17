@@ -7,7 +7,11 @@
   </tr>
   <% @mentions.each do |mention| %>
     <tr>
-      <td><%= link_to "link", "www.reddit.com#{mention.url}" %></td>
+      <td>
+        <%= link_to "www.reddit.com#{mention.url}" do %>
+          <div class="fa fa-external-link"></div>
+        <% end %>
+      </td>
       <td><%= mention.body %></td>
     </tr>
   <% end %>

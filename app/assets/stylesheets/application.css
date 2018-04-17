@@ -10,6 +10,38 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
+
+
+html, body {
+  font-family: 'Open Sans', sans-serif;
+  color: #666;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+a, a:visited {
+    color: inherit;
+}
+
+a,
+button {
+  outline: none;
+}
+
+.section {
+  padding: 60px;
+}
+
+.header-primary {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
