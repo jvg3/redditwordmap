@@ -11,7 +11,7 @@ class WordMapController < ApplicationController
         mentions.each do |mention|
           mention.nouns.each do |noun|
 
-            if noun.length < 16 && noun.length > 3
+            if noun && noun.length < 16 && noun.length > 3
               word_counts[noun] ||= 0
               word_counts[noun] += 1
             end
