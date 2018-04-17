@@ -1,7 +1,9 @@
 class RedditAdapter
 
   def self.get_reddit_data
+    puts "START GET REDDIT DATA"
     self.get_subreddit_data
+    puts "END GET REDDIT DATA"
   end
 
   def self.get_subreddit_data
