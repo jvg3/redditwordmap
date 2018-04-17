@@ -22,6 +22,8 @@ class WordMapController < ApplicationController
           end
         end
 
+        word_counts.delete('https')
+
         json_words = word_counts.map{ |word, count| { text: word, size: count } }
         json_words.reject!{ |w| w[:size] < 3 }
         json_words.sort!{ |x,y| y[:size] <=> x[:size] }
