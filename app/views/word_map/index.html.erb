@@ -1,1 +1,14 @@
 <div id="cloud"></div>
+
+<table>
+  <tr>
+    <td>Link</td>
+    <td>Comment</td>
+  </tr>
+  <% @mentions.each do |mention| %>
+    <tr>
+      <td><%= link_to "link", "www.reddit.com#{mention.url}" %></td>
+      <td><%= mention.body %></td>
+    </tr>
+  <% end %>
+</table>

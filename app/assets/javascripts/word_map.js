@@ -1,4 +1,5 @@
 $(document).ready(() => {
+  // $("#cloud").html('');
   WordMap.init();
 });
 
@@ -9,6 +10,8 @@ WordMap = {
       method: 'get',
       url: '/word_map.json',
       success: (results) => {
+        console.log('results:');
+        console.log(results);
         this.printCloud(results.words);
       }
     });

@@ -1,22 +1,31 @@
 class WordMapController < ApplicationController
   def index
     respond_to do |format|
-      format.html
+      format.html do
+
+        @mentions = Mention.mentions_from_date(Time.now.utc - 1.day)
+      end
       format.json do
-        mentions = Mention.mentions_from_date(Time.now.utc - 1.hour)
+        tagger = EngTagger.new
+        mentions = Mention.mentions_from_date(Time.now.utc - 1.day)
         word_counts = {}
 
-        words = mentions.map(&:body).join(' ').split(/\W+/).map(&:downcase)
-        words.reject!{ |w| w.length < 5 || w.length > 16 }
-        words.each do |word|
-          word_counts[word] ||= 0
-          word_counts[word] += 1
+        mentions.each do |mention|
+          tagged = tagger.add_tags(mention.body)
+          tagger.get_nouns(tagged).each do |noun_count|
+
+            noun = noun_count[0].downcase
+            if noun.length < 14 && noun.length > 3
+              word_counts[noun] ||= 0
+              word_counts[noun] += 1
+            end
+          end
         end
 
         json_words = word_counts.map{ |word, count| { text: word, size: count } }
         json_words.sort!{ |x,y| y[:size] <=> x[:size] }
 
-        render json: { words: json_words.first(20) }
+        render json: { words: json_words.first(150) }
       end
     end
   end

@@ -1,3 +1,17 @@
 // Place all the styles related to the word_map controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#cloud {
+  margin: 50px 100px 0 100px;
+}
+
+table {
+  padding: 25px 100px;
+  tr {
+    td {
+      padding: 8px;
+      border: 1px solid #f8f8f8;
+    }
+  }
+}
