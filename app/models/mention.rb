@@ -16,6 +16,6 @@ class Mention < ActiveRecord::Base
   end
 
   def self.drop_old_rows
-    Mention.where('created_at < ?', Date.today.advance(days: -14)).destroy_all
+    Mention.where('created_at < ?', Time.now.utc - 4.hours).destroy_all
   end
 end
