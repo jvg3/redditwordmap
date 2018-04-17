@@ -12,7 +12,7 @@ class WordMapController < ApplicationController
 
         mentions.each do |mention|
           tagged = tagger.add_tags(mention.body)
-          tagger.get_nouns(tagged).each do |noun_count|
+          (tagger.get_nouns(tagged) || []).each do |noun_count|
 
             noun = noun_count[0].downcase
             if noun.length < 14 && noun.length > 3
