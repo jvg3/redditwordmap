@@ -3,7 +3,7 @@ class WordMapController < ApplicationController
     respond_to do |format|
       format.html do
 
-        @mentions = Mention.mentions_from_date(Time.now.utc - 1.day)
+        @mentions = Mention.mentions_from_date(Time.now.utc - 1.hour)
       end
       format.json do
         tagger = EngTagger.new
